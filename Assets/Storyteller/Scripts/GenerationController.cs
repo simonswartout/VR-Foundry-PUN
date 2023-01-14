@@ -3,15 +3,17 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
-namespace Foundry
+public class GenerationController : MonoBehaviour
 {
-    public class GenerationController : MonoBehaviour
-    {
-        [SerializeField] TMP_Text inputText;
+public List<ToggleObject> toggleObjects = new();
+[SerializeField] TMP_Text inputText;
 
-        public void SubmitText() 
+    public void SubmitText() 
+    {
+        string phrase = inputText.text;
+        foreach (ToggleObject toggleObject in toggleObjects)
         {
-            Debug.Log(inputText.text);
+            toggleObject.ToggleIfStringMatches(phrase);
         }
     }
 }
